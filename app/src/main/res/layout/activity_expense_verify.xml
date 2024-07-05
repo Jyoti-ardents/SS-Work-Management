@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ExpenseVerifyActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        android:text="Verify Expense"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/back_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="32dp"
+        android:id="@+id/back_btn"
+        android:layout_marginHorizontal="20dp"
+        app:tint="@color/appcolor"
+        />
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_btn"
+        android:orientation="horizontal"
+        android:background="@color/appcolor"
+        android:weightSum="3"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Expense"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Approval By"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verify"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:paddingHorizontal="10dp"
+        android:id="@+id/status"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Office Bill"
+            android:layout_weight="1"
+            android:gravity="center"
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ankur Singh"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
+       <com.google.android.material.button.MaterialButton
+           android:layout_width="match_parent"
+           android:layout_height="35dp"
+           android:text="Verify"
+           android:layout_weight="1"
+           android:id="@+id/btn_verify"
+           android:gravity="center"
+           />
+        <TextView
+            android:id="@+id/txt_approve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="APPROVE"
+            android:layout_weight="1"
+            android:textColor="@color/green"
+            android:visibility="gone"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/txt_reject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="REJECT"
+            android:layout_weight="1"
+            android:textColor="@color/red"
+            android:visibility="gone"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
