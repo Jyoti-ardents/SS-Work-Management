@@ -7,42 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".Activity.ExpenseActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="150dp"
-        android:text="Expense"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp"
-        android:id="@+id/back_btn"
-        android:layout_marginHorizontal="20dp"
-        app:tint="@color/appcolor"
-        />
+    <include layout="@layout/header_lay"
+        android:id="@+id/title"/>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="104dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginHorizontal="20dp"
-        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:cardElevation="10dp"
         app:cardCornerRadius="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingVertical="40dp">
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
@@ -55,7 +35,6 @@
                 app:boxCornerRadiusBottomStart="10dp"
                 app:boxCornerRadiusTopEnd="10dp"
                 app:boxCornerRadiusTopStart="10dp"
-                android:layout_marginTop="50dp"
                 android:elevation="5dp"
                 >
 
@@ -82,6 +61,7 @@
                 app:cardBackgroundColor="@color/white"
                 >
                 <EditText
+                    android:id="@+id/edt_authority"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Reporting Authority"
@@ -106,6 +86,7 @@
                 app:cardBackgroundColor="@color/white"
                 >
                 <EditText
+                    android:id="@+id/edt_amount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Amount"
@@ -117,31 +98,32 @@
                     />
 
             </com.google.android.material.card.MaterialCardView>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginHorizontal="20dp"
-                android:id="@+id/approval_by"
-                app:boxStrokeColor="@color/black"
-                app:boxStrokeWidth="1dp"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/approve_by"
                 android:layout_marginTop="20dp"
-                android:elevation="5dp"
+                app:cardElevation="5dp"
+                app:strokeColor="@color/black"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/white"
                 >
-
-                <AutoCompleteTextView
+                <EditText
+                    android:id="@+id/edt_approveby"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Approval By"
-                    android:textColor="@color/mediumgrey"
-                    android:inputType="none"
-                    android:id="@+id/autoCompleteTxtView1"
+                    android:hint="Approval By"
+                    android:textColorHint="@color/mediumgrey"
+                    android:paddingStart="10dp"
+                    android:inputType="text"
+                    android:background="@null"
+                    android:layout_gravity="center"
                     />
-            </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

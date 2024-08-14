@@ -19,6 +19,7 @@ import ardents.workmanagementsystem.ViewModel.LoginViewModel
 import ardents.workmanagementsystem.databinding.ActivityLoginBinding
 import ardents.workmanagementsystem.utils.Helper
 import ardents.workmanagementsystem.utils.NetworkResult
+import ardents.workmanagementsystem.utils.SharedPrefManager
 
 class LoginActivity :BaseActivity() {
     lateinit var  binding:ActivityLoginBinding
@@ -38,8 +39,9 @@ class LoginActivity :BaseActivity() {
         binding.btnLogin.setOnClickListener {
             val mail=binding.edtMail.text.toString().trim()
             val password=binding.edtPass.text.toString().trim()
-            if (!Helper.validateEditText(binding.edtPass)||
-                !Helper.isValidMail(binding.edtMail)){
+            if (!Helper.isValidMail(binding.edtMail)||
+                !Helper.validateEditText(binding.edtPass)
+                ){
                 return@setOnClickListener
             }else{
                 viewModel.loginData(LoginRequest(mail,password))
@@ -53,9 +55,13 @@ class LoginActivity :BaseActivity() {
             when(it){
                 is NetworkResult.Success ->{
                     if (it.data?.response == "Success"){
+                        SharedPrefManager.getInstance(this).setLoginResponse(it.data.response)
+                        SharedPrefManager.getInstance(this).setLoginMail(it.data.Login_Email)
                         Toast.makeText(this,"Login Successfull",Toast.LENGTH_SHORT).show()
                         startActivity(Intent(applicationContext,MainActivity::class.java))
                         finish()
+                    }else{
+
                     }
                 }
                 is NetworkResult.Error->{
@@ -87,6 +93,7 @@ class LoginActivity :BaseActivity() {
             binding.hideLoginPasswd.visibility=View.VISIBLE
             binding.edtPass.setSelection(cusorPosition)
         }
+
     }
 
 }

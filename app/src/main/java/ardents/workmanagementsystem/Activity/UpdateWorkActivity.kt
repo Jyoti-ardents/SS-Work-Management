@@ -23,7 +23,34 @@ class UpdateWorkActivity : AppCompatActivity() {
         }
 
         binding.work.taskDaily.setOnClickListener {
-            startActivity(Intent(applicationContext,DailyTaskListActivity::class.java))
+            val intent=Intent(applicationContext,DailyTaskListActivity::class.java)
+            intent.putExtra("TaskType","SS Work Task Daily")
+            startActivity(intent)
+        }
+        binding.work.taskSpvs.setOnClickListener {
+            val intent=Intent(applicationContext,DailyTaskListActivity::class.java)
+            intent.putExtra("TaskType","MD SPVS Meeting")
+            startActivity(intent)
+        }
+        binding.work.taskOther.setOnClickListener {
+            val intent=Intent(applicationContext,DailyTaskListActivity::class.java)
+            intent.putExtra("TaskType","Other")
+            startActivity(intent)
+        }
+        binding.work.taskPersonal.setOnClickListener {
+            val intent=Intent(applicationContext,DailyTaskListActivity::class.java)
+            intent.putExtra("TaskType","SS Personal Meeting")
+            startActivity(intent)
+        }
+        binding.work.taskCompleted.setOnClickListener {
+            val intent=Intent(applicationContext,DailyTaskListActivity::class.java)
+            intent.putExtra("TaskType","SS Task Complete (UPSRTC)")
+            startActivity(intent)
+        }
+        binding.work.taskRmMeeting.setOnClickListener {
+            val intent=Intent(applicationContext,DailyTaskListActivity::class.java)
+            intent.putExtra("TaskType","RM Meeting")
+            startActivity(intent)
         }
     }
 }

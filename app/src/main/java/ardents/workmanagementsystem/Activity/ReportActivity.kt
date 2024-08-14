@@ -6,12 +6,19 @@ import android.os.Bundle
 import android.text.Editable
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ThemedSpinnerAdapter.Helper
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import ardents.workmanagementsystem.Model.TaskReportRequest
 import ardents.workmanagementsystem.R
+import ardents.workmanagementsystem.ViewModel.TaskViewModel
 import ardents.workmanagementsystem.databinding.ActivityReportBinding
+import ardents.workmanagementsystem.utils.NetworkResult
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -19,6 +26,8 @@ import java.util.Locale
 class ReportActivity : AppCompatActivity() {
     lateinit var binding:ActivityReportBinding
     private val calendar = Calendar.getInstance()
+    lateinit var viewModel: TaskViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        // enableEdgeToEdge()
@@ -29,12 +38,30 @@ class ReportActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.backBtn.setOnClickListener {
+        viewModel=ViewModelProvider(this).get(TaskViewModel::class.java)
+
+        binding.title.txtHeader.text="Reports"
+
+        binding.title.backBtn.setOnClickListener {
             finish()
         }
 
         binding.btnShow.setOnClickListener {
-            startActivity(Intent(applicationContext,ReportStatusActivity::class.java))
+            val fromDate=binding.edtFromDate.text.toString().trim()
+            val toDate=binding.edtTodate.text.toString().trim()
+            val task=binding.autoCompleteTxtView.text.toString().trim()
+            if (!ardents.workmanagementsystem.utils.Helper.validateEditText(binding.edtTodate)
+                || !ardents.workmanagementsystem.utils.Helper.validateEditText(binding.edtFromDate)
+                || !ardents.workmanagementsystem.utils.Helper.validateEditText(binding.autoCompleteTxtView)){
+                return@setOnClickListener
+            }else{
+                val intent=Intent(applicationContext,ReportStatusActivity::class.java)
+                intent.putExtra("FromDate",fromDate)
+                intent.putExtra("ToDate",toDate)
+                intent.putExtra("Task",task)
+                startActivity(intent)
+            }
+
         }
 
         val task=resources.getStringArray(R.array.task)
@@ -47,6 +74,9 @@ class ReportActivity : AppCompatActivity() {
         binding.imgeToDate.setOnClickListener {
             showDatePicker(binding.edtTodate)
         }
+
+
+        binding.btnShow
     }
     private fun showDatePicker(setDate:EditText) {
         // Create a DatePickerDialog
@@ -70,4 +100,5 @@ class ReportActivity : AppCompatActivity() {
         // Show the DatePicker dialog
         datePickerDialog.show()
     }
+
 }

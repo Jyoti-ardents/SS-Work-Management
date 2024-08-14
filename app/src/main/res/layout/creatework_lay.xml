@@ -81,7 +81,7 @@
             app:cardCornerRadius="50dp"
             app:cardElevation="5dp"
             android:layout_marginTop="15dp"
-
+            android:id="@+id/task_rmMeeting"
             >
 
             <LinearLayout
@@ -114,7 +114,7 @@
             app:cardCornerRadius="50dp"
             app:cardElevation="5dp"
             android:layout_marginTop="15dp"
-
+            android:id="@+id/task_spvs"
             >
 
             <LinearLayout
@@ -147,6 +147,7 @@
             app:cardCornerRadius="50dp"
             app:cardElevation="5dp"
             android:layout_marginTop="15dp"
+            android:id="@+id/task_personal"
 
             >
 
@@ -180,6 +181,7 @@
             app:cardCornerRadius="50dp"
             app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:id="@+id/task_other"
 
             >
 

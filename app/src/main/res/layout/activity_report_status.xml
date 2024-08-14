@@ -6,36 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ReportStatusActivity">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="158dp"
-        android:text="Reports Status"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp"
-        android:id="@+id/back_btn"
-        android:layout_marginHorizontal="20dp"
-        app:tint="@color/appcolor"
-        />
+   <include layout="@layout/header_lay"
+       android:id="@+id/title"/>
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/back_btn"
+        app:layout_constraintTop_toBottomOf="@id/title"
         android:orientation="horizontal"
         android:background="@color/appcolor"
         android:weightSum="2"
@@ -63,72 +42,16 @@
             />
         
     </LinearLayout>
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/taskReportRecycler"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginVertical="5dp"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:paddingHorizontal="5dp"
-        android:id="@+id/status"
-      >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Write a Java program to print hello world"
-            android:layout_weight="1"
-            android:gravity="center"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Not Completed"
-            android:layout_weight="1"
-            android:textColor="@color/red"
-            android:gravity="center"
-            />
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/mediumgrey"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status"
-        android:id="@+id/view"
         />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:paddingHorizontal="5dp"
-        android:id="@+id/status2"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Write a Java program to print hello world"
-            android:layout_weight="1"
-            android:gravity="center"
 
 
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Not Completed"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/red"
-            />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

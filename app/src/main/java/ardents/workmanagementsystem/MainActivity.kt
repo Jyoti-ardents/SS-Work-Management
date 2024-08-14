@@ -1,15 +1,12 @@
 package ardents.workmanagementsystem
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ardents.workmanagementsystem.Activity.BaseActivity
-import ardents.workmanagementsystem.Activity.CreateWorkActivity
 import ardents.workmanagementsystem.Activity.DailyTaskActivity
 import ardents.workmanagementsystem.Activity.ExpenseActivity
 import ardents.workmanagementsystem.Activity.ExpenseVerifyActivity
@@ -18,44 +15,62 @@ import ardents.workmanagementsystem.Activity.LoginActivity
 import ardents.workmanagementsystem.Activity.ReportActivity
 import ardents.workmanagementsystem.Activity.UpdateWorkActivity
 import ardents.workmanagementsystem.databinding.ActivityMainBinding
+import ardents.workmanagementsystem.utils.SharedPrefManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.google.android.material.slider.Slider
-import java.util.ArrayList
 
 class MainActivity : BaseActivity() {
-    lateinit var binding:ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // enableEdgeToEdge()
-        binding=ActivityMainBinding.inflate(layoutInflater)
+        // enableEdgeToEdge()
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        if (SharedPrefManager.getInstance(this).getLoginMail().equals("fo@gmail.com")){
+            binding.cardVerifyExpense.visibility=View.VISIBLE
+        }
+        if (SharedPrefManager.getInstance(this).getLoginMail().equals("admin@gmail.com")){
+            binding.cardVerifyExpense.visibility=View.VISIBLE
+            binding.cardReport.visibility=View.VISIBLE
+            binding.cardInsurance.visibility=View.VISIBLE
+            binding.cardUpdatework.visibility=View.VISIBLE
+            binding.cardCreatework.visibility=View.VISIBLE
+            binding.cardExpense.visibility=View.VISIBLE
+        }
+        if (!SharedPrefManager.getInstance(this).getLoginMail().equals("fo@gmail.com") ||
+            !SharedPrefManager.getInstance(this).getLoginMail().equals("fo@gmail.com")
+            ){
+            binding.cardUpdatework.visibility=View.VISIBLE
+            binding.cardExpense.visibility=View.VISIBLE
+            binding.cardReport.visibility=View.VISIBLE
+        }
+
 
         binding.cardReport.setOnClickListener {
-            startActivity(Intent(applicationContext,ReportActivity::class.java))
+            startActivity(Intent(applicationContext, ReportActivity::class.java))
         }
         binding.cardCreatework.setOnClickListener {
-            startActivity(Intent(applicationContext,DailyTaskActivity::class.java))
+            startActivity(Intent(applicationContext, DailyTaskActivity::class.java))
         }
         binding.cardExpense.setOnClickListener {
-            startActivity(Intent(applicationContext,ExpenseActivity::class.java))
+            startActivity(Intent(applicationContext, ExpenseActivity::class.java))
         }
         binding.cardUpdatework.setOnClickListener {
-            startActivity(Intent(applicationContext,UpdateWorkActivity::class.java))
+            startActivity(Intent(applicationContext, UpdateWorkActivity::class.java))
         }
         binding.cardVerifyExpense.setOnClickListener {
-            startActivity(Intent(applicationContext,ExpenseVerifyActivity::class.java))
+            startActivity(Intent(applicationContext, ExpenseVerifyActivity::class.java))
         }
         binding.cardInsurance.setOnClickListener {
-            startActivity(Intent(applicationContext,InsuranceActivity::class.java))
+            startActivity(Intent(applicationContext, InsuranceActivity::class.java))
         }
         binding.imgLogout.setOnClickListener {
-            startActivity(Intent(applicationContext,LoginActivity::class.java))
+            showDialog()
         }
 
 //        binding.bottomNavigation.setOnNavigationItemSelectedListener {
@@ -72,15 +87,32 @@ class MainActivity : BaseActivity() {
 //            }
 //        }
 
-        val sliderList= ArrayList<SlideModel>()
-        sliderList.add(SlideModel(R.drawable.s3,ScaleTypes.FIT))
-        sliderList.add(SlideModel(R.drawable.s1,ScaleTypes.FIT))
-        sliderList.add(SlideModel(R.drawable.s2,ScaleTypes.FIT))
-        sliderList.add(SlideModel(R.drawable.s4,ScaleTypes.FIT))
+        val sliderList = ArrayList<SlideModel>()
+        sliderList.add(SlideModel(R.drawable.s3, ScaleTypes.FIT))
+        sliderList.add(SlideModel(R.drawable.s1, ScaleTypes.FIT))
+        sliderList.add(SlideModel(R.drawable.s2, ScaleTypes.FIT))
+        sliderList.add(SlideModel(R.drawable.s4, ScaleTypes.FIT))
         binding.imageSlider.setImageList(sliderList)
 
 
+    }
 
+    fun showDialog() {
+        val dialog = AlertDialog.Builder(this)
+        dialog.setTitle("Logout")
+        dialog.setMessage("Are you sure want to logout ?")
+        dialog.setPositiveButton("Yes") { dialog, _ ->
+            SharedPrefManager.getInstance(this).clearLoginResponse()
+            startActivity(Intent(applicationContext, LoginActivity::class.java))
+            finish()
+
+        }
+        dialog.setNegativeButton("No") { dialog, _ ->
+            dialog.dismiss()
+        }
+        dialog.setCancelable(false)
+        dialog.create()
+        dialog.show()
 
     }
 }

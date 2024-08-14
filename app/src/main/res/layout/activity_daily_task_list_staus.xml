@@ -7,29 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".Activity.DailyTaskListStausActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="128dp"
-        android:text="Update Work Status"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="32dp"
-        android:id="@+id/back_btn"
-        android:layout_marginHorizontal="20dp"
-        app:tint="@color/appcolor"
-        />
+   <include layout="@layout/header_lay"
+       android:id="@+id/title"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -37,7 +16,7 @@
        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="104dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/title"
         app:cardElevation="10dp"
         app:cardCornerRadius="10dp">
         <LinearLayout
@@ -83,6 +62,7 @@
                 app:cardBackgroundColor="@color/white"
                 >
                 <EditText
+                    android:id="@+id/edt_checkBy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Checked By"
@@ -107,9 +87,10 @@
                 app:cardBackgroundColor="@color/white"
                 >
                 <EditText
+                    android:id="@+id/edt_remark"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Remarks ( if any )"
+                    android:hint="Remarks"
                     android:textColorHint="@color/mediumgrey"
                     android:paddingStart="10dp"
                     android:inputType="text"

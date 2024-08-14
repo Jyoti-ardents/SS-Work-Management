@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import ardents.workmanagementsystem.MainActivity
 import ardents.workmanagementsystem.Model.RegistrationRequest
 import ardents.workmanagementsystem.R
 import ardents.workmanagementsystem.ViewModel.RegistrationViewModel
@@ -55,7 +56,8 @@ class RegisterActivity : AppCompatActivity() {
                 is NetworkResult.Success ->{
                     if (it.data?.response == "Success"){
                         Toast.makeText(this,"Register Successfully",Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(applicationContext,LoginActivity::class.java))
+                        startActivity(Intent(applicationContext,MainActivity::class.java))
+                        finish()
                     }
                 }
                 is NetworkResult.Error ->{
@@ -63,6 +65,8 @@ class RegisterActivity : AppCompatActivity() {
                 }
                 is NetworkResult.Loading ->{
                     Helper.showProgressDialog(this)
+                }else ->{
+                Toast.makeText(this,"Something went wrong",Toast.LENGTH_SHORT).show()
                 }
             }
 
