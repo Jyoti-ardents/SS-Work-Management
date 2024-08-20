@@ -18,7 +18,7 @@
             android:id="@+id/task_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Write a Java program to print hello world"
+            android:text=""
             android:layout_weight="1"
             android:gravity="center"
             />
@@ -27,7 +27,7 @@
             android:id="@+id/task_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Not Completed"
+            android:text=""
             android:layout_weight="1"
             android:textColor="@color/red"
             android:gravity="center"

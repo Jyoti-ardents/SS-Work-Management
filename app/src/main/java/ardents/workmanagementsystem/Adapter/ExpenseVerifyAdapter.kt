@@ -36,7 +36,7 @@ class ExpenseVerifyAdapter(val context: Context,var expenseList:List<ExpenseVeri
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        holder.binding.expenseType.text=expenseList.get(position).Expense_Type
         holder.binding.approvalBy.text=expenseList.get(position).Approval_By
-        if (expenseList.get(position).Expense_Approval.isEmpty()){
+        if (expenseList.get(position).Expense_Approval.isNullOrEmpty()){
             holder.binding.btnVerify.visibility=View.VISIBLE
             holder.binding.txtStatus.visibility=View.GONE
         }else{

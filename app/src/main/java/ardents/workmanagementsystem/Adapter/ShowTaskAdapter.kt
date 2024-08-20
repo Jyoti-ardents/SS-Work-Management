@@ -33,7 +33,7 @@ class ShowTaskAdapter(val context: Context,var taskList:List<ShowTaskModelItem>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.taskName.text=taskList.get(position).Task_Description
         holder.binding.assignTo.text=taskList.get(position).Assigned_To.toString()
-        holder.binding.taskName.setOnClickListener {
+        holder.binding.cardtask.setOnClickListener {
             val intent=Intent(context,DailyTaskListStausActivity::class.java)
             intent.putExtra("TaskId",taskList.get(position).Task_Id)
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
