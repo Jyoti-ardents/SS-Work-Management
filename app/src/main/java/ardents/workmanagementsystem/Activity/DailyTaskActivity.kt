@@ -42,16 +42,19 @@ class DailyTaskActivity : AppCompatActivity() {
         val task=resources.getStringArray(R.array.task)
         val taskAdapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,task)
         binding.autoCompleteTxtView.setAdapter(taskAdapter)
+        binding.autoAssigbTo.setAdapter(ArrayAdapter(this,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.names)))
+        binding.autoAssigbBy.setAdapter(ArrayAdapter(this,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.names)))
+        binding.autoCheckbBy.setAdapter(ArrayAdapter(this,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.names)))
 
         binding.btnSubmit.setOnClickListener {
             val task=binding.autoCompleteTxtView.text.toString()
             val task_dec=binding.taskDesc.text.toString()
-            val assign_to=binding.taskAsignto.text.toString()
-            val assign_by=binding.taskAsignby.text.toString()
+            val assign_to=binding.autoAssigbTo.text.toString()
+            val assign_by=binding.autoAssigbBy.text.toString()
             val duration=binding.taskDuration.text.toString()
             if (!Helper.validateEditText(binding.taskDesc)
-                || !Helper.validateEditText(binding.taskAsignby)
-                || !Helper.validateEditText(binding.taskAsignto)
+                || !Helper.validateEditText(binding.autoAssigbBy)
+                || !Helper.validateEditText(binding.autoAssigbBy)
                 || !Helper.validateEditText(binding.taskDuration)
                 || !Helper.validateEditText(binding.autoCompleteTxtView)){
                 return@setOnClickListener
@@ -60,12 +63,12 @@ class DailyTaskActivity : AppCompatActivity() {
                 submitTask()
             }
             binding.taskDesc.text=null
-            binding.taskAsignby.text=null
             binding.taskDuration.text=null
-            binding.taskAsignto.text=null
             binding.autoCompleteTxtView.text=null
+            binding.autoAssigbTo.text=null
+            binding.autoAssigbBy.text=null
             binding.taskRemarks.text=null
-            binding.taskCheckBy.text=null
+            binding.autoCheckbBy.text=null
 
         }
 

@@ -12,6 +12,7 @@ import ardents.workmanagementsystem.Activity.ExpenseActivity
 import ardents.workmanagementsystem.Activity.ExpenseVerifyActivity
 import ardents.workmanagementsystem.Activity.InsuranceActivity
 import ardents.workmanagementsystem.Activity.LoginActivity
+import ardents.workmanagementsystem.Activity.ProfileActivity
 import ardents.workmanagementsystem.Activity.ReportActivity
 import ardents.workmanagementsystem.Activity.UpdateWorkActivity
 import ardents.workmanagementsystem.databinding.ActivityMainBinding
@@ -31,23 +32,33 @@ class MainActivity : BaseActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        if (SharedPrefManager.getInstance(this).getLoginMail().equals("fo@gmail.com")){
+        if (SharedPrefManager.getInstance(this).getLoginMail().equals("fo@ss.com")){
             binding.cardVerifyExpense.visibility=View.VISIBLE
-        }
-        if (SharedPrefManager.getInstance(this).getLoginMail().equals("admin@gmail.com")){
+        }else if (SharedPrefManager.getInstance(this).getLoginMail().equals("md@ss.com")){
             binding.cardVerifyExpense.visibility=View.VISIBLE
             binding.cardReport.visibility=View.VISIBLE
             binding.cardInsurance.visibility=View.VISIBLE
             binding.cardUpdatework.visibility=View.VISIBLE
             binding.cardCreatework.visibility=View.VISIBLE
             binding.cardExpense.visibility=View.VISIBLE
-        }
-        if (!SharedPrefManager.getInstance(this).getLoginMail().equals("fo@gmail.com") ||
-            !SharedPrefManager.getInstance(this).getLoginMail().equals("fo@gmail.com")
+        }else if (SharedPrefManager.getInstance(this).getLoginMail().equals("sachin@ss.com") ||
+            SharedPrefManager.getInstance(this).getLoginMail().equals("lnshukla@ss.com") ||
+            SharedPrefManager.getInstance(this).getLoginMail().equals("sanjay@ss.com") ||
+            SharedPrefManager.getInstance(this).getLoginMail().equals("shubham@ss.com") ||
+            SharedPrefManager.getInstance(this).getLoginMail().equals("virendra@gmail.com")||
+            SharedPrefManager.getInstance(this).getLoginMail().equals("Surya@gmail.com")||
+            SharedPrefManager.getInstance(this).getLoginMail().equals("Shivam@gmail.com")
             ){
+            binding.cardReport.visibility=View.VISIBLE
+            binding.cardCreatework.visibility=View.VISIBLE
             binding.cardUpdatework.visibility=View.VISIBLE
             binding.cardExpense.visibility=View.VISIBLE
-            binding.cardReport.visibility=View.VISIBLE
+            binding.cardInsurance.visibility=View.VISIBLE
+        }else{
+            binding.cardUpdatework.visibility=View.VISIBLE
+            binding.cardExpense.visibility=View.VISIBLE
+            binding.cardInsurance.visibility=View.VISIBLE
+            binding.cardCreatework.visibility=View.VISIBLE
         }
 
 
@@ -69,23 +80,24 @@ class MainActivity : BaseActivity() {
         binding.cardInsurance.setOnClickListener {
             startActivity(Intent(applicationContext, InsuranceActivity::class.java))
         }
-        binding.imgLogout.setOnClickListener {
-            showDialog()
-        }
 
-//        binding.bottomNavigation.setOnNavigationItemSelectedListener {
-//            when(it.itemId){
-//                R.id.bottom_reports -> {
-//                    val intent=Intent(applicationContext,ReportActivity::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//
-//                else -> {
-//                    true
-//                }
-//            }
-//        }
+        binding.bottomNavigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.bottom_profile -> {
+                    val intent=Intent(applicationContext,ProfileActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.bottom_logout -> {
+                    showDialog()
+                    true
+                }
+
+                else -> {
+                    true
+                }
+            }
+        }
 
         val sliderList = ArrayList<SlideModel>()
         sliderList.add(SlideModel(R.drawable.s3, ScaleTypes.FIT))

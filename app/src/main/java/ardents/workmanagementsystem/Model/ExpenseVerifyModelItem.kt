@@ -7,5 +7,6 @@ data class ExpenseVerifyModelItem(
     val Expense_Type: String,
     val Reporting_Authority: String,
     val Expense_Approval:String,
+    val Expense_Bill:String,
     val response: String
 )

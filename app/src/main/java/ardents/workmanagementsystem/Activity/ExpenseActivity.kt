@@ -63,6 +63,7 @@ class ExpenseActivity : AppCompatActivity() {
         val expense=resources.getStringArray(R.array.expense)
         val expenseAdapter=ArrayAdapter(this , android.R.layout.simple_list_item_1, expense)
         binding.autoCompleteTxtView.setAdapter(expenseAdapter)
+        binding.autoApprovalBy.setAdapter(ArrayAdapter(this,android.R.layout.simple_list_item_1,resources.getStringArray(R.array.approvalBy)))
 
 
         binding.btnSave.setOnClickListener {
@@ -70,11 +71,11 @@ class ExpenseActivity : AppCompatActivity() {
             Log.d("jyotidata","expenseType===="+expenseType)
             val type2=binding.autoCompleteTxtView
             val amount=binding.edtAmount.text.toString().trim()
-            val approveBy=binding.edtApproveby.text.toString().trim()
+            val approveBy=binding.autoApprovalBy.text.toString().trim()
             val reporting=binding.edtAuthority.text.toString().trim()
             if (!Helper.validateEditText(binding.autoCompleteTxtView)
                 || !Helper.validateEditText(binding.edtAmount)
-                || !Helper.validateEditText(binding.edtApproveby)
+                || !Helper.validateEditText(binding.autoApprovalBy)
                 || !Helper.validateEditText(binding.edtAuthority)){
                 return@setOnClickListener
             }else{
@@ -84,7 +85,7 @@ class ExpenseActivity : AppCompatActivity() {
 //                Log.d("jyotidata","base64===="+selectedImageBase64.toString())
             }
             binding.edtAmount.text=null
-            binding.edtApproveby.text=null
+            binding.autoApprovalBy.text=null
             binding.edtAuthority.text=null
             binding.uplaodBill.text=null
             binding.autoCompleteTxtView.text=null
@@ -118,8 +119,7 @@ class ExpenseActivity : AppCompatActivity() {
 
 
 
-    private val filePickerLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    private val filePickerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 result.data?.data?.let { uri ->
                     handleFile(uri)

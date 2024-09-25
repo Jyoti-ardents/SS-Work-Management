@@ -21,4 +21,15 @@
         <item>Hotel Bill</item>
         <item>TADA Plan</item>
     </string-array>
+    <string-array name="names">
+        <item>MD</item>
+        <item>Sachin</item>
+        <item>Lnshukla</item>
+        <item>Virendra</item>
+        <item>Shivam</item>
+    </string-array>
+    <string-array name="approvalBy">
+        <item>MD</item>
+        <item>FO</item>
+    </string-array>
 </resources>

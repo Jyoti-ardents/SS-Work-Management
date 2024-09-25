@@ -11,13 +11,13 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/applogo" />
+        app:srcCompat="@drawable/ss" />
 
     <TextView
         android:id="@+id/txt_login"
@@ -138,6 +138,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/frameLogin" />
     <TextView
+        android:visibility="gone"
         android:id="@+id/txt_forfotpass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -193,6 +194,7 @@
         </LinearLayout>
     </FrameLayout>
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

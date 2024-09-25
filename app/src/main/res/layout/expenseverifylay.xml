@@ -8,8 +8,6 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="5dp"
         android:orientation="horizontal"
-        android:weightSum="3"
-        android:paddingHorizontal="10dp"
         android:id="@+id/status"
         >
         <TextView
@@ -30,6 +28,23 @@
             android:text="Ankur Singh"
             android:layout_weight="1"
             android:gravity="center"
+            />
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="500"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+        <ImageView
+            android:id="@+id/showPdf"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:src="@drawable/pdf"
             />
 
         <Button

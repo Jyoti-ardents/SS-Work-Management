@@ -20,7 +20,6 @@
         app:layout_constraintTop_toBottomOf="@id/title"
         android:orientation="horizontal"
         android:background="@color/appcolor"
-        android:weightSum="3"
         android:gravity="center"
         android:paddingHorizontal="10dp"
         >
@@ -44,6 +43,27 @@
             android:layout_weight="1"
             android:gravity="center"
             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amount"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show pdf"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:gravity="center"
+            />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

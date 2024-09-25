@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ardents.workmanagementsystem.Activity.PdfInsuranceActivity
 import ardents.workmanagementsystem.Activity.VerifyActivity
 import ardents.workmanagementsystem.Model.ExpenseVerifyModelItem
 import ardents.workmanagementsystem.databinding.ExpenseverifylayBinding
@@ -36,6 +37,8 @@ class ExpenseVerifyAdapter(val context: Context,var expenseList:List<ExpenseVeri
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        holder.binding.expenseType.text=expenseList.get(position).Expense_Type
         holder.binding.approvalBy.text=expenseList.get(position).Approval_By
+        holder.binding.price.text=expenseList.get(position).Expense_Amount
+       // holder.binding.showPdf.text="https://ssapi.marmelos.co.in"+expenseList.get(position).Expense_Bill
         if (expenseList.get(position).Expense_Approval.isNullOrEmpty()){
             holder.binding.btnVerify.visibility=View.VISIBLE
             holder.binding.txtStatus.visibility=View.GONE
@@ -43,6 +46,12 @@ class ExpenseVerifyAdapter(val context: Context,var expenseList:List<ExpenseVeri
             holder.binding.btnVerify.visibility=View.GONE
             holder.binding.txtStatus.visibility=View.VISIBLE
             holder.binding.txtStatus.text=expenseList.get(position).Expense_Approval
+        }
+        holder.binding.showPdf.setOnClickListener {
+            val intent=Intent(context,PdfInsuranceActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.putExtra("url",expenseList.get(position).Expense_Bill)
+            context.startActivity(intent)
         }
 
         holder.binding.btnVerify.setOnClickListener {

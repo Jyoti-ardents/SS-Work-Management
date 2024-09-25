@@ -55,7 +55,7 @@ class LoginActivity :BaseActivity() {
             when(it){
                 is NetworkResult.Success ->{
                     if (it.data?.response == "Success"){
-                        SharedPrefManager.getInstance(this).setLoginResponse(it.data.response)
+                        SharedPrefManager.getInstance(this).setLoginResponse(it.data)
                         SharedPrefManager.getInstance(this).setLoginMail(it.data.Login_Email)
                         Toast.makeText(this,"Login Successfull",Toast.LENGTH_SHORT).show()
                         startActivity(Intent(applicationContext,MainActivity::class.java))

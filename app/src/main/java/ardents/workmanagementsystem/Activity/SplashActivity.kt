@@ -29,7 +29,7 @@ class SplashActivity : BaseActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed(
             {
-                val loginResponse = SharedPrefManager.getInstance(this).getLoginResponse()
+                val loginResponse = SharedPrefManager.getInstance(this).getLoginResponse()?.response.toString()
                 Log.d("jyotiActivity", "Login Response: $loginResponse")
 
                 if (!loginResponse.isNullOrEmpty() && loginResponse == "Success"){
